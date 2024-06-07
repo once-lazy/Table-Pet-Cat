@@ -448,6 +448,8 @@ MonoBehaviour:
   cats:
   - {fileID: 9204790918543415664, guid: 7125d0195ba2578428e1d7d3f6880ac2, type: 3}
   - {fileID: 4166490900648007934, guid: 68cc8848e63a3e74b80e67a8716c6871, type: 3}
+  - {fileID: 7119027078848389243, guid: 57e3026f8e1ddef4eace6f712bd07071, type: 3}
+  - {fileID: 2367065084147453442, guid: adb3fd2b05c53534fa7ad71777100425, type: 3}
 --- !u!1 &737333550
 GameObject:
   m_ObjectHideFlags: 0

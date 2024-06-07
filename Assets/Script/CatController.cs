@@ -83,10 +83,10 @@ public class CatController : MonoBehaviour
                             sleep = true;
                             break;
                         case 3:
-                            animator.SetTrigger("lcking");
+                            animator.SetTrigger("licking");
                             break;
                         case 4:
-                            animator.SetTrigger("lcking2");
+                            animator.SetTrigger("licking2");
                             break;
                         case 5:
                             animator.SetTrigger("meow");
