@@ -13,7 +13,6 @@ public class MouseController : MonoBehaviour
     private float waitTime = 0;//计算按钮当前存在时间
     public GameObject[] cats; //当前猫咪种类总数
     private int cat_index = 0;
-    private Vector3 cat_p;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +54,8 @@ public class MouseController : MonoBehaviour
                     
                     //先将世界坐标转为屏幕坐标
                     Vector2 uiPos = Camera.main.transform.InverseTransformPoint(cat.transform.position);
-                    setUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(uiPos.x*100,-200);
+                    setUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(uiPos.x*100,uiPos.y*100 + 50);
+                    //setUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(uiPos.x*100,-200);
                 
                 }     
             }
@@ -71,9 +71,9 @@ public class MouseController : MonoBehaviour
     {
         //转换喵咪脚本的run的状态
         CatController catController= cat.GetComponent<CatController>();
-        catController.setRun(!catController.getRun());
+        catController.Run = !catController.Run;
         //切换按钮文字
-        if(catController.getRun())
+        if(catController.Run)
         {
             runText.text = "慢步";
         }else
@@ -101,6 +101,7 @@ public class MouseController : MonoBehaviour
             //将当前的cat赋给对象中
             cat = cat_new;
         }
+        runText.text = "奔跑";
 
     }
 }
