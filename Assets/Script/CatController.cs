@@ -79,6 +79,7 @@ public class CatController : MonoBehaviour
     //移动
     private void Move()
     {
+        stop_time = 0;
         sleep = false;
         if (run)
         {

@@ -48,18 +48,33 @@ public class MouseController : MonoBehaviour
                 GameObject clickedObject = hit.collider.gameObject;
                 if(clickedObject.tag =="Cat")
                 {   
-                    cat = clickedObject;
+                    if(cat == null)
+                    {
+                        cat = clickedObject;
+                    }
+                    //将使猫被鼠标拖动
+                    Vector3 mP = Input.mousePosition;
+                    cat.transform.position =Camera.main.ScreenToWorldPoint(new Vector3(mP.x, mP.y, 10));
                     //出现按钮交互，并调整到猫咪上方
-                    setUI.SetActive(true);
+                    if(!setUI.activeSelf)
+                    {
+                        setUI.SetActive(true);
+                    }
                     
                     //先将世界坐标转为屏幕坐标
                     Vector2 uiPos = Camera.main.transform.InverseTransformPoint(cat.transform.position);
-                    setUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(uiPos.x*100,uiPos.y*100 + 50);
-                    //setUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(uiPos.x*100,-200);
-                
+                    if(cat.transform.position.y<0)
+                    {
+                        setUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(uiPos.x*100,uiPos.y*100 + 50);
+                    }else
+                    {
+                        setUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(uiPos.x*100,uiPos.y*100 - 50);
+                    }
                 }     
             }
         }
+
+        
     }
 
     public void toExit()
