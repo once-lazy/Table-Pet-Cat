@@ -16,6 +16,10 @@ public class CatController : MonoBehaviour
     private bool run = false;//是否处于跑步
     private bool sleep = false;//是否处于睡眠
     public bool Run{get{return run;}set{run=value;} }//跑步的setget方法
+    [SerializeField]
+    private GameObject runAct; //跑步特效
+    private float runAct_Offset_x = 0.8f;//特效与本体的相对距离x
+    private float runAct_Offset_y = 0.2f;//特效与本体的相对距离y
     // Start is called before the first frame update
     void Start()
     {
@@ -136,6 +140,22 @@ public class CatController : MonoBehaviour
             }
             want_time = Random.Range(5, 10);
             stop_time = 0;
+        }
+    }
+    //播放特效动画，并判断位置
+    private void creatRunAct()
+    {
+        GameObject r = Instantiate(runAct).gameObject;
+        if(sr.flipX)
+        {   
+            
+            //在右侧
+            r.transform.position = new Vector3(gameObject.transform.position.x+runAct_Offset_x,gameObject.transform.position.y-runAct_Offset_y,r.transform.position.z);
+        }else
+        {
+            r.GetComponent<SpriteRenderer>().flipX = true;
+            //在左侧
+            r.transform.position = new Vector3(gameObject.transform.position.x-runAct_Offset_x,gameObject.transform.position.y-runAct_Offset_y,r.transform.position.z);
         }
     }
 }
